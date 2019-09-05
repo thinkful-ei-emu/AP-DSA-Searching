@@ -1,4 +1,5 @@
 const BinarySearchTree = require('./BST')
+const Queue = require('./queue')
 
 
 //1. 
@@ -73,7 +74,7 @@ function postOrder(BST){
     if(BST !== null){
         postOrder(BST.left)
         postOrder(BST.right)
-        console.log(BST.key)
+        console.log(BST.key) 
     }
 }
 
@@ -103,6 +104,58 @@ const BST = new BinarySearchTree()
 
 
 //6. 
+
+//maybe breadth? works with rows
+
+function bfs(tree, values = []) {
+
+    const queue = new Queue(); // Assuming a Queue is implemented (refer to previous lesson on Queue)
+    const node = tree.key;
+    queue.enqueue(node);
+    while (queue.length) {
+        const node = queue.dequeue(); //remove from the queue
+        values.push(node.key); // add that value from the queue to an array
+
+        if (node.left) {
+            queue.enqueue(node.left); //add left child to the queue
+        }
+
+        if (node.right) {
+            queue.enqueue(node.right); // add right child to the queue
+        }
+    }
+
+    //console.log(values)
+    return values;
+
+}
+
+function findNextUp(){ 
+
+    const nextUp = new BinarySearchTree()
+    nextUp.insert('Picard')
+    nextUp.left = new BinarySearchTree('Riker')
+    nextUp.right = new BinarySearchTree('Data')
+    nextUp.left.left = new BinarySearchTree('Worf')
+    nextUp.left.right = new BinarySearchTree('LaForge')
+    nextUp.left.left.left = new BinarySearchTree('LSO')
+    nextUp.right.right = new BinarySearchTree('Crusher')
+    nextUp.right.right.left = new BinarySearchTree('Selar')
+
+
+
+    let order = []
+
+    bfs(nextUp, order)
+
+    console.log(order)
+
+    //console.log(nextUp)
+
+
+}
+
+findNextUp()
 
 //7.
 
