@@ -1,3 +1,6 @@
+const BinarySearchTree = require('./BST')
+
+
 //1. 
 function binarySearch(array, value, start, end) {
     var start = start === undefined ? 0 : start;
@@ -35,3 +38,98 @@ function binarySearch(array, value, start, end) {
 //3rd: value = 16, start = 6, end = 7, index = 6, item = 14, 14 < 16, then recurse
 //4th: value = 16, start = 7, end = 7, index = 7, item = 15, 15 < 16, then recurse
 //5th: value = 16, start = 8, end = 7 -> base case hit and -1 returned 
+
+//2. react app in folder
+
+//3. skip for now
+
+//4. 
+
+    // 1) 14, 19, 15, 27, 25, 79, 90, 91, 89, 35
+
+    // 2) 8, 6, 5, 7, 10, 9 ,11
+
+
+//5. 
+
+function preOrder(BST){
+
+    if(BST !== null){
+        console.log(BST.key)
+        preOrder(BST.left)
+        preOrder(BST.right)
+    }
+}
+
+function inOrder(BST){
+    if(BST !== null){
+        inOrder(BST.left)
+        console.log(BST.key)
+        inOrder(BST.right)
+    }
+}
+
+function postOrder(BST){
+    if(BST !== null){
+        postOrder(BST.left)
+        postOrder(BST.right)
+        console.log(BST.key)
+    }
+}
+
+const BST = new BinarySearchTree()
+
+    BST.insert(25)
+    BST.insert(15)
+    BST.insert(50)
+    BST.insert(10)
+    BST.insert(24)
+    BST.insert(35)
+    BST.insert(70)
+    BST.insert(4)
+    BST.insert(12)
+    BST.insert(18)
+    BST.insert(31)
+    BST.insert(44)
+    BST.insert(66)
+    BST.insert(90)
+    BST.insert(22)
+    //preOrder(BST)  
+    //inOrder(BST)
+    postOrder(BST)
+    
+    //console.log(BST)
+
+
+
+//6. 
+
+//7.
+
+// function max(arr){
+//     if(!arr.length){
+//         return 0
+//     }
+
+//     let buy = arr[0]
+//     let sell = arr[0]
+//     let profit = 0
+
+//     for(let i = 0; i < arr.length; i++){
+//         sell = arr[i]
+
+//         if(sell < buy){
+//             buy = sell
+//         }
+
+//         if(sell - buy > profit){
+//             profit = sell - buy
+//         }
+//     }
+//     return profit
+// }
+
+// console.log(max([128, 97, 121, 123, 98, 97, 105]));
+
+//8. 
+
